@@ -1,3 +1,8 @@
+//
+// Created by RobertVoropaev on 01.02.2016.
+//
+
+
 #include "Matrix.h"
 #include "SquareMatrix.h"
 
@@ -29,7 +34,7 @@ int main() {
 
     A *= 3;
     cout << "Матрица умноженная на 3: " << endl << A;
-    cout << "Транспонированная матрица: " << endl << tran(A / 3);
+    cout << "Транспонированная матрица: " << endl << transpose(A / 3);
 
     cout << "Введите квадратную матрицу 3 на 3: " << endl;
     SquareMatrix B(3);
@@ -39,10 +44,9 @@ int main() {
 
     bool noinverse;
     inverse(B, noinverse);
-    if (noinverse) {
+    if(noinverse) {
         cout << "Обратной матрицы не существует";
-    }
-    else {
+    } else {
         cout << "Обратная матрица: " << endl << inverse(B, noinverse);
     }
     return 0;

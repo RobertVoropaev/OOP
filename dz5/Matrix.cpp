@@ -1,158 +1,187 @@
+//
+// Created by RobertVoropaev on 01.02.2016.
+//
+
+
 #include "Matrix.h"
 
-Matrix::Matrix(int a, int b) {
-    sizeN = a;
-    sizeM = b;
-    matrix = new double *[sizeN];
-    for (int i = 0; i < sizeN; i++) {
-        matrix[i] = new double[sizeM];
-        for (int j = 0; j < sizeM; j++) matrix[i][j] = 0;
+Matrix::Matrix(size_t sizeN, size_t sizeM) {
+    sizeN_ = sizeN;
+    sizeM_ = sizeM;
+    matrix_ = new double* [sizeN_];
+    for(int i = 0; i < sizeN_; i++) {
+        matrix_[i] = new double[sizeM_];
+        for(int j = 0; j < sizeM_; j++)
+            matrix_[i][j] = 0;
     }
 }
 
-Matrix::Matrix(const Matrix &obj) {
-    sizeN = obj.sizeN;
-    sizeM = obj.sizeM;
-    matrix = new double *[sizeN];
-    for (int i = 0; i < sizeN; i++) {
-        matrix[i] = new double[sizeM];
-        for (int j = 0; j < sizeM; j++)
-            matrix[i][j] = obj.matrix[i][j];
+Matrix::Matrix(const Matrix& obj) {
+    sizeN_ = obj.sizeN_;
+    sizeM_ = obj.sizeM_;
+    matrix_ = new double* [sizeN_];
+    for(int i = 0; i < sizeN_; i++) {
+        matrix_[i] = new double[sizeM_];
+        for(int j = 0; j < sizeM_; j++)
+            matrix_[i][j] = obj.matrix_[i][j];
     }
 }
 
 Matrix::~Matrix() {
-    for (int i = 0; i < sizeN; i++) delete[] matrix[i];
-    delete[]matrix;
+    for(int i = 0; i < sizeN_; i++)
+        delete[] matrix_[i];
+    delete[]matrix_;
 }
 
-Matrix Matrix::operator=(Matrix A) {
-    if (sizeN != A.sizeN || sizeM != A.sizeM) exit(1);
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++) matrix[i][j] = A.matrix[i][j];
+Matrix& Matrix::operator=(Matrix A) {
+    if(sizeN_ != A.sizeN_ || sizeM_ != A.sizeM_)
+        throw SizeException();
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            matrix_[i][j] = A.matrix_[i][j];
     }
     return *this;
 }
 
 Matrix Matrix::operator+(Matrix A) {
-    if (sizeN != A.sizeN || sizeM != A.sizeM) exit(2);
-    Matrix B(sizeN, sizeN);
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++) B.matrix[i][j] = matrix[i][j] + A.matrix[i][j];
+    if(sizeN_ != A.sizeN_ || sizeM_ != A.sizeM_)
+        throw SizeException();
+    Matrix B(sizeN_, sizeN_);
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            B.matrix_[i][j] = matrix_[i][j] + A.matrix_[i][j];
     }
     return B;
 }
 
 Matrix Matrix::operator+=(Matrix A) {
-    if (sizeN != A.sizeN || sizeM != A.sizeM) exit(3);
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++) matrix[i][j] += A.matrix[i][j];
+    if(sizeN_ != A.sizeN_ || sizeM_ != A.sizeM_)
+        throw SizeException();
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            matrix_[i][j] += A.matrix_[i][j];
     }
     return *this;
 }
 
 Matrix Matrix::operator*(double a) {
-    Matrix B(sizeN, sizeN);
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++) B.matrix[i][j] = matrix[i][j] * a;
+    Matrix B(sizeN_, sizeN_);
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            B.matrix_[i][j] = matrix_[i][j] * a;
     }
     return B;
 }
 
 Matrix Matrix::operator*=(double a) {
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++) matrix[i][j] *= a;
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            matrix_[i][j] *= a;
     }
     return *this;
 }
 
 Matrix Matrix::operator/(double a) {
-    if (a == 0) exit(4);
-    Matrix B(sizeN, sizeM);
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++) B.matrix[i][j] = matrix[i][j] / a;
+    if(a == 0)
+        throw DivisionByZeroException();
+    Matrix B(sizeN_, sizeM_);
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            B.matrix_[i][j] = matrix_[i][j] / a;
     }
     return B;
 }
 
 Matrix Matrix::operator/=(double a) {
-    if (a == 0) exit(5);
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++) matrix[i][j] /= a;
+    if(a == 0)
+        throw DivisionByZeroException();
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            matrix_[i][j] /= a;
     }
     return *this;
 }
 
 Matrix operator*(double a, Matrix A) {
-    for (int i = 0; i < A.sizeN; i++) {
-        for (int j = 0; j < A.sizeM; j++) A.matrix[i][j] *= a;
+    for(int i = 0; i < A.sizeN_; i++) {
+        for(int j = 0; j < A.sizeM_; j++)
+            A.matrix_[i][j] *= a;
     }
     return A;
 }
 
 Matrix Matrix::operator*(Matrix A) {
-    if (sizeM != A.sizeN) exit(6);
-    Matrix B(sizeN, sizeN);
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++)
-            for (int k = 0; k < sizeM; k++) {
-                B.matrix[i][j] += (matrix[i][k] * A.matrix[k][j]);
+    if(sizeM_ != A.sizeN_)
+        throw SizeException();
+    Matrix B(sizeN_, sizeN_);
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            for(int k = 0; k < sizeM_; k++) {
+                B.matrix_[i][j] += (matrix_[i][k] * A.matrix_[k][j]);
             }
     }
     return B;
 }
 
 Matrix Matrix::operator*=(Matrix A) {
-    if (sizeM != A.sizeN) exit(7);
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++)
-            for (int k = 0; k < sizeM; k++) {
-                matrix[i][k] += A.matrix[k][j];
+    if(sizeM_ != A.sizeN_)
+        throw SizeException();
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            for(int k = 0; k < sizeM_; k++) {
+                matrix_[i][k] += A.matrix_[k][j];
             }
     }
     return *this;
 }
 
-double Matrix::operator()(int a, int b) {
-    if (a > sizeN || b > sizeM) exit(1);
-    return matrix[a - 1][b - 1];
+double& Matrix::get(int n, int m){
+    if(n > sizeN_ || m > sizeM_)
+        throw InvalidIndexException();
+    return matrix_[n - 1][m - 1];
 }
 
-Matrix tran(Matrix A) {
-    Matrix B(A.sizeM, A.sizeN);
-    for (int i = 0; i < A.sizeN; i++) {
-        for (int j = 0; j < A.sizeM; j++) {
-            B.matrix[j][i] = A.matrix[i][j];
+Matrix transpose(Matrix A) {
+    Matrix B(A.sizeM_, A.sizeN_);
+    for(int i = 0; i < A.sizeN_; i++) {
+        for(int j = 0; j < A.sizeM_; j++) {
+            B.matrix_[j][i] = A.matrix_[i][j];
         }
     }
     return B;
 }
 
-ostream &operator<<(ostream &stream, Matrix A) {
-    for (int i = 0; i < A.sizeN; i++) {
-        for (int j = 0; j < A.sizeM; j++) stream << A.matrix[i][j] << " ";
+ostream& operator<<(ostream& stream, Matrix A) {
+    for(int i = 0; i < A.sizeN_; i++) {
+        for(int j = 0; j < A.sizeM_; j++)
+            stream << A.matrix_[i][j] << " ";
         stream << endl;
     }
     return stream;
 }
 
-istream &operator>>(istream &stream, Matrix &A) {
-    for (int i = 0; i < A.sizeN; i++) {
-        for (int j = 0; j < A.sizeM; j++) stream >> A.matrix[i][j];
+istream& operator>>(istream& stream, Matrix& A) {
+    for(int i = 0; i < A.sizeN_; i++) {
+        for(int j = 0; j < A.sizeM_; j++)
+            stream >> A.matrix_[i][j];
     }
     return stream;
 }
 
 bool Matrix::operator==(Matrix A) {
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++) if (matrix[i][j] != A.matrix[i][j]) return false;
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            if(matrix_[i][j] != A.matrix_[i][j])
+                return false;
     }
     return true;
 }
 
 bool Matrix::operator!=(Matrix A) {
-    for (int i = 0; i < sizeN; i++) {
-        for (int j = 0; j < sizeM; j++) if (matrix[i][j] != A.matrix[i][j]) return true;
+    for(int i = 0; i < sizeN_; i++) {
+        for(int j = 0; j < sizeM_; j++)
+            if(matrix_[i][j] != A.matrix_[i][j])
+                return true;
     }
     return false;
 }
