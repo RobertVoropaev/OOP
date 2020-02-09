@@ -31,6 +31,8 @@ public:
     Matrix operator*=(Matrix A);
 
     double& get(int n, int m);
+    size_t getSizeN() const;
+    size_t getSizeM() const;
 
     friend Matrix transpose(Matrix A);
 

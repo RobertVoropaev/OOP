@@ -4,7 +4,7 @@
 
 #include "SquareMatrix.h"
 
-SquareMatrix::SquareMatrix(int a) {
+SquareMatrix::SquareMatrix(size_t a) {
     sizeN_ = a;
     matrix_ = new double* [sizeN_];
     for(int i = 0; i < sizeN_; i++) {
@@ -32,7 +32,7 @@ SquareMatrix::~SquareMatrix() {
 
 SquareMatrix SquareMatrix::operator=(SquareMatrix A) {
     if(sizeN_ != A.sizeN_)
-        exit(1);
+        throw SizeException();
     for(int i = 0; i < sizeN_; i++) {
         for(int j = 0; j < sizeN_; j++)
             matrix_[i][j] = A.matrix_[i][j];
@@ -42,7 +42,7 @@ SquareMatrix SquareMatrix::operator=(SquareMatrix A) {
 
 SquareMatrix SquareMatrix::operator+(SquareMatrix A) {
     if(sizeN_ != A.sizeN_)
-        exit(2);
+        throw SizeException();
     SquareMatrix B(sizeN_);
     for(int i = 0; i < sizeN_; i++) {
         for(int j = 0; j < sizeN_; j++)
@@ -53,7 +53,7 @@ SquareMatrix SquareMatrix::operator+(SquareMatrix A) {
 
 SquareMatrix SquareMatrix::operator+=(SquareMatrix A) {
     if(sizeN_ != A.sizeN_)
-        exit(3);
+        throw SizeException();
     for(int i = 0; i < sizeN_; i++) {
         for(int j = 0; j < sizeN_; j++)
             matrix_[i][j] += A.matrix_[i][j];
@@ -80,7 +80,7 @@ SquareMatrix SquareMatrix::operator*=(double a) {
 
 SquareMatrix SquareMatrix::operator/(double a) {
     if(a == 0)
-        exit(4);
+        throw DivisionByZeroException();
     SquareMatrix B(sizeN_);
     for(int i = 0; i < sizeN_; i++) {
         for(int j = 0; j < sizeN_; j++)
@@ -91,7 +91,7 @@ SquareMatrix SquareMatrix::operator/(double a) {
 
 SquareMatrix SquareMatrix::operator/=(double a) {
     if(a == 0)
-        exit(5);
+        throw DivisionByZeroException();
     for(int i = 0; i < sizeN_; i++) {
         for(int j = 0; j < sizeN_; j++)
             matrix_[i][j] /= a;
@@ -109,7 +109,7 @@ SquareMatrix operator*(double a, SquareMatrix A) {
 
 SquareMatrix SquareMatrix::operator*(SquareMatrix A) {
     if(sizeN_ != A.sizeN_)
-        exit(6);
+        throw SizeException();
     SquareMatrix B(sizeN_);
     for(int i = 0; i < sizeN_; i++) {
         for(int j = 0; j < sizeN_; j++)
@@ -122,7 +122,7 @@ SquareMatrix SquareMatrix::operator*(SquareMatrix A) {
 
 SquareMatrix SquareMatrix::operator*=(SquareMatrix A) {
     if(sizeN_ != A.sizeN_)
-        exit(7);
+        throw SizeException();
     for(int i = 0; i < sizeN_; i++) {
         for(int j = 0; j < sizeN_; j++)
             for(int k = 0; k < sizeN_; k++) {
@@ -132,13 +132,13 @@ SquareMatrix SquareMatrix::operator*=(SquareMatrix A) {
     return *this;
 }
 
-double SquareMatrix::operator()(int a, int b) {
-    if(a > sizeN_ || b > sizeN_)
-        exit(8);
-    return matrix_[a - 1][b - 1];
+double& SquareMatrix::get(size_t n, size_t m) {
+    if(n > sizeN_ || m > sizeN_)
+        throw InvalidIndexException();
+    return matrix_[n - 1][m - 1];
 }
 
-SquareMatrix trans(SquareMatrix A) {
+SquareMatrix transpose(SquareMatrix A) {
     SquareMatrix B(A.sizeN_);
     for(int i = 0; i < A.sizeN_; i++) {
         for(int j = 0; j < A.sizeN_; j++) {
@@ -186,11 +186,12 @@ double det(SquareMatrix A) {
     }
 }
 
-SquareMatrix inverse(SquareMatrix A, bool& noinverse) {
+SquareMatrix inverse(SquareMatrix A, bool& isInverse) {
     if(det(A) == 0) {
-        noinverse = true;
+        isInverse = false;
         return A;
     } else {
+        isInverse = true;
         SquareMatrix B(A.sizeN_);
         for(int i = 0; i < A.sizeN_; i++) {
             for(int j = 0; j < A.sizeN_; j++) {
@@ -211,8 +212,7 @@ SquareMatrix inverse(SquareMatrix A, bool& noinverse) {
                 B.matrix_[i][j] = pow(-1, i + j) * det(C);
             }
         }
-        noinverse = false;
-        return trans(B) / det(A);
+        return transpose(B) / det(A);
     }
 }
 

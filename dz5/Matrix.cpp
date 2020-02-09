@@ -185,3 +185,11 @@ bool Matrix::operator!=(Matrix A) {
     }
     return false;
 }
+
+size_t Matrix::getSizeN() const {
+    return sizeN_;
+}
+
+size_t Matrix::getSizeM() const {
+    return sizeM_;
+}

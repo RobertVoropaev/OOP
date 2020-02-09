@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <cmath>
+#include "Matrix.h"
 
 using namespace std;
 
@@ -31,11 +32,11 @@ public:
     SquareMatrix operator*(SquareMatrix A);
     SquareMatrix operator*=(SquareMatrix A);
 
-    double operator()(size_t n, size_t m);
+    double& get(size_t n, size_t m);
 
-    friend SquareMatrix trans(SquareMatrix A);
+    friend SquareMatrix transpose(SquareMatrix A);
     friend double det(SquareMatrix A);
-    friend SquareMatrix inverse(SquareMatrix A, bool& noinverse);
+    friend SquareMatrix inverse(SquareMatrix A, bool& isInverse);
 
     friend ostream& operator<<(ostream& stream, SquareMatrix A);
 
