@@ -1,6 +1,6 @@
 #include "SquareMatrix.h"
 
-SquareMatrix SquareMatrix::operator=(const SquareMatrix& A) {
+SquareMatrix& SquareMatrix::operator=(const SquareMatrix& A) {
     if(sizeN != A.sizeN)
         exit(1);
     for(int i = 0; i < sizeN; i++) {

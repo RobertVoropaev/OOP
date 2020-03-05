@@ -9,7 +9,7 @@ class SquareMatrix : public Matrix {
 public:
     SquareMatrix(int a) : Matrix(a, a) {};
 
-    SquareMatrix operator=(const SquareMatrix& A);
+    SquareMatrix& operator=(const SquareMatrix& A);
     SquareMatrix operator+(const SquareMatrix& A) const;
     SquareMatrix operator+=(const SquareMatrix& A);
 
