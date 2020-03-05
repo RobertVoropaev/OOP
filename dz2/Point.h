@@ -1,12 +1,25 @@
-#pragma once
+//
+// Created by RobertVoropaev on 16.02.2016.
+//
+
+#ifndef DZ2_POINT_H
+#define DZ2_POINT_H
+
+#include "Field.h"
+
 class Point {
-	double x, y; //Координаты точки
-	double FieldSideX, FieldSideY;//Размер поля
 public:
-	Point();//Конструктор
-	void move(double deltaX, double deltaY);//Движение
-	double getX();//Получить координату по у
-	double getY();//Получить координату по х
-	void setFieldSide(double sideX, double sideY);//Установить стороны поля
-	void info();//Показать все параметры 
+    explicit Point(double x = 0, double y = 0, Field field = Field());
+
+    double getX() const;
+    double getY() const;
+
+    void move(double deltaX, double deltaY);
+private:
+    double x_;
+    double y_;
+
+    Field field_;
 };
+
+#endif //DZ2_POINT_H

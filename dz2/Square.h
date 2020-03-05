@@ -1,14 +1,28 @@
-#pragma once
+//
+// Created by RobertVoropaev on 16.02.2016.
+//
+
+#ifndef DZ2_SQUARE_H
+#define DZ2_SQUARE_H
+
+#include "Field.h"
+
 class Square {
-	double x, y, side; //Параметры квадрата
-	double FieldSideX, FieldSideY;//Размер поля
 public:
-	Square();//Конструктор
-	void move(double deltaX, double deltaY);//Движение
-	double getX();//Получить координату по у
-	double getY();//Получить координату по х
-	double getSide();//Получить радиус
-	void scale(double k); // Масштабировать в k раз
-	void setFieldSide(double sideX, double sideY);//Установить стороны поля
-	void info();//Показать все параметры 
+    explicit Square(double x1 = 0, double y1 = 0, double side = 0, Field field = Field());
+
+    double getX1() const;
+    double getY1() const;
+    double getSide() const;
+
+    void scale(double k);
+    void move(double deltaX, double deltaY);
+private:
+    double x1_;
+    double y1_;
+    double side_;
+
+    Field field_;
 };
+
+#endif //DZ2_SQUARE_H

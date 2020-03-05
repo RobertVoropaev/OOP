@@ -1,43 +1,51 @@
+//
+// Created by RobertVoropaev on 16.02.2016.
+//
+
 #include "Square.h"
-#include <cmath>
-#include <iostream>
 
-Square::Square() {
-	x = y = 0;
-	FieldSideX = FieldSideY = 20000;
-	side = 10;
+Square::Square(double x1, double y1, double side, Field field) : field_(field), x1_(x1), y1_(y1), side_(side) {
+    Field withoutBordersField = field_.generateFieldWithoutLeftAndTopBorders(side_);
+    if(!withoutBordersField.isPointInTheField(x1_, y1_)) {
+        throw OutOfFieldException();
+    }
 }
 
-void Square::setFieldSide(double sideX, double sideY) {
-	FieldSideX = sideX;
-	FieldSideY = sideY;
+double Square::getX1() const {
+    return x1_;
 }
 
-double Square::getX() {
-	return x;
+double Square::getY1() const {
+    return y1_;
 }
 
-double Square::getY() {
-	return y;
-}
-
-double Square::getSide() {
-	return side;
-}
-
-void Square::info() {
-	std::cout << "Square\n" << "Field: " << FieldSideX << "x" << FieldSideY << "\n" << "SquareCentrePosition: (" << x << "," << y << ")\n" << "SideSquare: " << side << "\n\n";
-}
-
-void Square::move(double deltaX, double deltaY) {
-	if (((abs(x + side/2 + deltaX)) <= (FieldSideX / 2)) && ((abs(y + side/2 + deltaY) <= (FieldSideY / 2)))) {
-		x += deltaX;
-		y += deltaY;
-	}
-	else std::cout << "Error. This command is not executed: move(" << deltaX << "," << deltaY << ")\n\n";
+double Square::getSide() const {
+    return side_;
 }
 
 void Square::scale(double k) {
-	if(k>0) side *= k;
-	else std::cout << "Error. This command is not executed: scale(" << k << ")\n\n";
+    if(k < 0) {
+        throw NegativeScaleException();
+    }
+
+    double new_side = side_ * k;
+    Field withoutBordersField = field_.generateFieldWithoutLeftAndTopBorders(new_side);
+    if(!withoutBordersField.isPointInTheField(x1_, y1_)) {
+        throw OutOfFieldException();
+    }
+
+    side_ = new_side;
+}
+
+void Square::move(double deltaX, double deltaY) {
+    double new_x = x1_ + deltaX;
+    double new_y = y1_ + deltaY;
+
+    Field withoutBordersField = field_.generateFieldWithoutLeftAndTopBorders(side_);
+    if(!withoutBordersField.isPointInTheField(new_x, new_y)) {
+        throw OutOfFieldException();
+    }
+
+    x1_ = new_x;
+    y1_ = new_y;
 }

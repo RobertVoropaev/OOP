@@ -1,33 +1,35 @@
+//
+// Created by RobertVoropaev on 16.02.2016.
+//
+
 #include "Point.h"
-#include <cmath>
-#include <iostream>
 
-Point::Point() {
-	x = y = 0;
-	FieldSideX = FieldSideY = 20000;
+Point::Point(double x, double y, Field field) : field_(field), x_(x), y_(y) {
+    if(!field_.isPointInTheField(x, y)) {
+        throw OutOfFieldException();
+    }
 }
 
-void Point::setFieldSide(double sideX, double sideY) {
-	FieldSideX = sideX;
-	FieldSideY = sideY;
+double Point::getX() const {
+    return x_;
 }
 
-double Point::getX() {
-	return x;
-}
-
-double Point::getY() {
-	return y;
-}
-
-void Point::info() {
-	std::cout << "Point\n" << "Field: " << FieldSideX << "x" << FieldSideY << "\n" << "PointPosition: (" << x << "," << y << ")\n\n";
+double Point::getY() const {
+    return y_;
 }
 
 void Point::move(double deltaX, double deltaY) {
-	if (((abs(x + deltaX)) <= (FieldSideX / 2)) && ((abs(y + deltaY) <= (FieldSideY / 2)))) {
-		x += deltaX;
-		y += deltaY;
-	}
-	else std::cout << "Error. This command is not executed: move(" << deltaX << "," << deltaY << ")\n\n";
+    double new_x = x_ + deltaX;
+    double new_y = y_ + deltaY;
+
+    if(!field_.isPointInTheField(new_x, new_y)) {
+        throw OutOfFieldException();
+    }
+
+    x_ = new_x;
+    y_ = new_y;
 }
+
+
+
+
