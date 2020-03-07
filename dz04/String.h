@@ -1,36 +1,52 @@
-#pragma once
+//
+// Created by RobertVoropaev on 15.03.2020.
+//
+
+#ifndef DZ04_STRING_H
+#define DZ04_STRING_H
+
 #include <iostream>
 #include <cstring>
 #include <string>
+
 using namespace std;
+
 class String {
-	char *string;
 public:
-	String(char *str = "");//Конструктор по умолчанию
-	String(int a); //Конструктор с передачей длины строки
-	String(const String &obj);//Конструктор копий
-	~String(); //Деструктор
-	//Конкатенация
-	String operator+(String a);
-	String operator+(char *str);
-	String operator+(char a);
-	//Присваивание
-	String operator=(String a);
-	String operator=(char *str);
-	String operator=(char a);
-	//Сложение с присваиванием
-	String operator+=(String a);
-	String operator+=(char *str);
-	String operator+=(char a);
-	//Повторение
-	String operator*(int a);
-	String operator*=(int a);
-	//Доступ к элементу
-	char operator[](int a);
-	//Ввод вывод
-	friend ostream& operator<<(ostream &stream, String &a);
-	friend istream& operator>>(istream &stream, String &a);
-	//Дополнительные 
-	bool operator==(String a);
-	bool operator!=(String a);
+    String(char const* str = (char*) "");
+    String(char c);
+    String(char c, size_t n);
+
+    String(const String& obj);
+    virtual ~String();
+
+    String& operator=(String const& obj);
+
+    explicit operator bool() const;
+    explicit operator char const*() const;
+
+    String& operator+=(String const& obj);
+
+    String& operator*=(size_t n);
+
+    char operator[](size_t i) const;
+    char& operator[](size_t i);
+
+    friend bool operator==(String const& s1, String const& s2);
+
+    friend ostream& operator<<(ostream& stream, String& s);
+    friend istream& operator>>(istream& stream, String& s);
+private:
+    char* data_;
+    size_t size_;
+
+    size_t max_input_size_ = 1024;
 };
+
+String operator+(String s1, String const& s2);
+
+String operator*(String s, size_t n);
+
+bool operator!=(String const& s1, String const& s2);
+
+#endif //DZ04_STRING_H

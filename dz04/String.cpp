@@ -1,156 +1,128 @@
 #include "String.h"
-//Конструктор по умолчанию/преобразования из Си-строки
-String::String(char *str) {
-	int n = strlen(str) + 1;
-	string = new char[n];
-	strcpy_s(string, n, str);
+
+#include <cstring>
+
+String::String(char const* str) {
+    size_ = strlen(str);
+    data_ = new char[size_ + 1];
+    strncpy(data_, str, size_ + 1);
 }
-//Конструктор строки заданой длины
-String::String(int a) {
-	string = new char[a + 1];
-	strcpy_s(string, 1, "");
+
+String::String(char c) {
+    size_ = 1;
+    data_ = new char[size_ + 1];
+    data_[0] = c;
+    data_[size_] = 0;
 }
-//Конструктор копирования
-String::String(const String &obj) {
-	int n = strlen(obj.string)+1;
-	string = new char[n];
-	strcpy_s(string, n, obj.string);
+
+String::String(char c, size_t n) {
+    size_ = n;
+    data_ = new char[size_ + 1];
+    for(int i = 0; i < size_; i++) {
+        data_[i] = c;
+    }
+    data_[size_] = 0;
 }
-//Деструктор
+
+String::String(const String& obj) {
+    size_ = strlen(obj.data_);
+    data_ = new char[size_ + 1];
+    strncpy(data_, obj.data_, size_ + 1);
+}
+
 String::~String() {
-	delete[]string;
+    delete[] data_;
 }
-//Конкатенация
-String String::operator+(String a) {
-	int n = strlen(string) + strlen(a.string) + 1;
-	String t(n);
-	strcpy_s(t.string, n, string);
-	strcat_s(t.string, n, a.string);
-	return t;
+
+String& String::operator=(String const& obj) {
+    if(this != &obj) {
+        delete[] data_;
+        size_ = obj.size_;
+        data_ = new char[size_ + 1];
+        strncpy(data_, obj.data_, size_ + 1);
+    }
+    return *this;
 }
-String String::operator+(char *str) {
-	int n = strlen(string) + strlen(str) + 1;
-	String t(n);
-	strcpy_s(t.string, n, string);
-	strcat_s(t.string, n, str);
-	return t;
+
+String::operator bool() const {
+    return size_ != 0;
 }
-String String::operator+(char a) {
-	int n = strlen(string) + 1;
-	String t(n);
-	char str[2] = { a, 0 };
-	strcpy_s(t.string, n, string);
-	strcat_s(t.string, n, str);
-	return t;
+
+String::operator char const*() const {
+    if(*this) {
+        return data_;
+    }
+    return "";
 }
-//Присваивание
-String String::operator=(String a) {
-	char *m;
-	m = string;
-	int n = strlen(a.string) + 1;
-	string = new char[n];
-	delete[]m;
-	strcpy_s(string, n, a.string);
-	return *this;
+
+String& String::operator+=(String const& obj) {
+    char* old_data = data_;
+    size_t old_size = size_;
+
+    size_ = strlen(data_) + strlen(obj.data_) + 1;
+    data_ = new char[size_];
+
+    strncpy(data_, old_data, old_size);
+    delete[] old_data;
+
+    strncat(data_, obj.data_, obj.size_);
+    return *this;
 }
-String String::operator=(char *str) {
-	char *m;
-	m = string;
-	int n = strlen(str) + 1;
-	string = new char[n];
-	delete[]m;
-	strcpy_s(string, n, str);
-	return *this;
+
+String operator+(String s1, String const& s2) {
+    return s1 += s2;
 }
-String String::operator=(char a) {
-	char str[2] = { a, 0 };
-	char *m;
-	m = string;
-	int n = strlen(str) + 1;
-	string = new char[n];
-	delete[]m;
-	strcpy_s(string, n, str);
-	return *this;
+
+String& String::operator*=(size_t n) {
+    size_t old_size = size_;
+    char* old_data = data_;
+
+    size_ = old_size * n;
+    data_ = new char[size_ + 1];
+    data_[0] = 0;
+
+    for(int i = 0; i < n; i++) {
+        strncat(data_, old_data, old_size);
+    }
+
+    delete old_data;
+    return *this;
 }
-//Cложение с присваиванием
-String String::operator+=(String a) {
-	char *m;
-	m = string;
-	int n = strlen(string) + strlen(a.string) + 1;
-	string = new char[n];
-	strcpy_s(string, n, m);
-	delete[] m;
-	strcat_s(string, n, a.string);
-	return *this;
+
+String operator*(String s, size_t n) {
+    return s *= n;
 }
-String String::operator+=(char *str) {
-	char *m;
-	m = string;
-	int n = strlen(string) + strlen(str) + 1;
-	string = new char[n];
-	strcpy_s(string, n, m);
-	delete[] m;
-	strcat_s(string, n, str);
-	return *this;
+
+
+char String::operator[](size_t i) const {
+    return data_[i];
 }
-String String::operator+=(char a) {
-	char str[2] = { a, 0 };
-	char *m;
-	m = string;
-	int n = strlen(string) + strlen(str) + 1;
-	string = new char[n];
-	strcpy_s(string, n, m);
-	delete[] m;
-	strcat_s(string, n, str);
-	return *this;
+
+char& String::operator[](size_t i) {
+    return data_[i];
 }
-//Повторение
-String String::operator*(int a) {
-	int n = strlen(string)*a + 1;
-	String t(n);
-	for (int i = 1; i <= a; i++) {
-		strcat_s(t.string, n, string);
-	}
-	return t;
+
+bool operator==(String const& s1, String const& s2) {
+    return strcmp(s1.data_, s2.data_) == 0;
 }
-String String::operator*=(int a) {
-	int n = strlen(string)*a + 1;
-	char *str = new char[n];
-	strcpy_s(str, n, string);
-	char *m = string;
-	string = new char[n];
-	delete[] m;
-	strcpy_s(string, n, str);
-	for (int i = 1; i < a; i++) {
-		strcat_s(string, n, str);
-	}
-	return *this;
+
+bool operator!=(String const& s1, String const& s2) {
+    return !(s1 == s2);
 }
-//Вывод отдельного символа
-char String::operator[](int a) {
-	return string[a];
+
+ostream& operator<<(ostream& stream, String& s) {
+    stream << s.data_;
+    return stream;
 }
-//Вывод из потока
-ostream& operator<<(ostream &stream, String &a)
-{
-	stream << a.string;
-	return stream;
-}
-//Ввод в поток
-istream& operator>>(istream &stream, String &a) {
-	char m[100000];
-	stream >> m;
-	int n = strlen(m) + 1;
-	a.string = new char[n];
-	strcpy_s(a.string, n, m);
-	return stream;
-}
-//Сравнение
-bool String::operator==(String a) {
-	if (strcmp(string, a.string)) return false;
-	else return true;
-}
-bool String::operator!=(String a) {
-	if (strcmp(string, a.string)) return true;
-	else return false;
+
+istream& operator>>(istream& stream, String& s) {
+    char new_data[s.max_input_size_];
+    delete[] s.data_;
+
+    stream >> new_data;
+    s.size_ = strlen(new_data) + 1;
+
+    s.data_ = new char[s.size_];
+    strncpy(s.data_, new_data, s.size_);
+    return stream;
 }
