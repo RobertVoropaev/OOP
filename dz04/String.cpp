@@ -110,7 +110,11 @@ bool operator!=(String const& s1, String const& s2) {
     return !(s1 == s2);
 }
 
-ostream& operator<<(ostream& stream, String& s) {
+size_t String::size() const{
+    return size_;
+}
+
+ostream& operator<<(ostream& stream, String const& s) {
     stream << s.data_;
     return stream;
 }

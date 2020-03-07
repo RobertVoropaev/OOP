@@ -34,7 +34,9 @@ public:
 
     friend bool operator==(String const& s1, String const& s2);
 
-    friend ostream& operator<<(ostream& stream, String& s);
+    size_t size() const;
+
+    friend ostream& operator<<(ostream& stream, String const& s);
     friend istream& operator>>(istream& stream, String& s);
 private:
     char* data_;
