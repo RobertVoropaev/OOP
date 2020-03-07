@@ -1,7 +1,6 @@
 //
-// Created by RobertVoropaev on 01.02.2016.
+// Created by RobertVoropaev on 22.03.2016.
 //
-
 
 #include "Matrix.h"
 

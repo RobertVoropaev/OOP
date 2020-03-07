@@ -1,8 +1,9 @@
 //
-// Created by RobertVoropaev on 01.02.2016.
+// Created by RobertVoropaev on 22.03.2016.
 //
 
-#pragma once
+#ifndef DZ05_SQUAREMATRIX_H
+#define DZ05_SQUAREMATRIX_H
 
 #include <iostream>
 #include <cmath>
@@ -49,3 +50,5 @@ private:
     double**    matrix_;
     size_t      sizeN_;
 };
+
+#endif //DZ05_SQUAREMATRIX_H

@@ -1,8 +1,9 @@
 //
-// Created by RobertVoropaev on 01.02.2016.
+// Created by RobertVoropaev on 22.03.2016.
 //
 
-#pragma once
+#ifndef DZ05_MATRIX_H
+#define DZ05_MATRIX_H
 
 #include <iostream>
 
@@ -48,6 +49,8 @@ private:
     size_t      sizeM_;
 };
 
-class InvalidIndexException : std::exception {};
-class SizeException : std::exception {};
-class DivisionByZeroException : std::exception {};
+class InvalidIndexException     : std::exception {};
+class SizeException             : std::exception {};
+class DivisionByZeroException   : std::exception {};
+
+#endif //DZ05_MATRIX_H
