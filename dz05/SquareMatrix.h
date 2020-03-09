@@ -31,6 +31,6 @@ bool isOrthogonal(SquareMatrix<2> const& A);
 
 class NotInverseExciption : std::exception {};
 
-#include "SquareMatrix_definitions.h"
+#include "SquareMatrix_def.h"
 
 #endif //DZ05_SQUAREMATRIX_H

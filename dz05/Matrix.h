@@ -74,6 +74,6 @@ bool operator!=(Matrix<N, M> const& A, Matrix<N, M> const& B);
 template<size_t N, size_t M>
 Matrix<M, N> transpose(Matrix<N, M> const& A);
 
-#include "Matrix_definitions.h"
+#include "Matrix_def.h"
 
 #endif //DZ05_MATRIX_H

@@ -2,8 +2,8 @@
 // Created by RobertVoropaev on 22.03.2016.
 //
 
-#ifndef DZ05_ROW_DEFINITIONS_H
-#define DZ05_ROW_DEFINITIONS_H
+#ifndef DZ05_ROW_DEF_H
+#define DZ05_ROW_DEF_H
 
 #include "Row.h"
 
@@ -157,4 +157,4 @@ bool operator!=(Row<M> const& R1, Row<M> const& R2){
     return !(R1 == R2);
 }
 
-#endif //DZ05_ROW_DEFINITIONS_H
+#endif //DZ05_ROW_DEF_H

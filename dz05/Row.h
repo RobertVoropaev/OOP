@@ -59,6 +59,6 @@ bool operator==(Row<M> const& R1, Row<M> const& R2);
 template <size_t M>
 bool operator!=(Row<M> const& R1, Row<M> const& R2);
 
-#include "Row_definitions.h"
+#include "Row_def.h"
 
 #endif //DZ05_ROW_H
