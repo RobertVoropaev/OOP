@@ -16,6 +16,28 @@ template<size_t N>
 SquareMatrix<N>::SquareMatrix(double matrix[N][N]): Matrix<N, N>(matrix) {
 }
 
+template <size_t N>
+SquareMatrix<N>& SquareMatrix<N>::operator*=(SquareMatrix<N> const& B){
+    *this = *this * B;
+    return *this;
+}
+
+
+template <size_t N>
+SquareMatrix<N>& SquareMatrix<N>::operator^=(size_t pow_n){
+    SquareMatrix<N> temp = *this;
+    for(int i = 1; i < pow_n; i++){
+        *this *= temp;
+    }
+    return *this;
+}
+
+template <size_t N>
+SquareMatrix<N> operator^(SquareMatrix<N> A, size_t pow_n) {
+    A ^= pow_n;
+    return A;
+}
+
 template<size_t N>
 double det(SquareMatrix<N> const& A) {
     double Det = 0;

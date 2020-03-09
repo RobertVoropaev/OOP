@@ -18,7 +18,13 @@ public:
     SquareMatrix();
     SquareMatrix(Matrix<N, N> matrix);
     explicit SquareMatrix(double matrix[N][N]);
+
+    SquareMatrix<N>& operator*=(SquareMatrix<N> const& B);
+    SquareMatrix<N>& operator^=(size_t pow_n);
 };
+
+template <size_t N>
+SquareMatrix<N> operator^(SquareMatrix<N> A, size_t pow_n);
 
 template<size_t N>
 double det(SquareMatrix<N> const& A);
