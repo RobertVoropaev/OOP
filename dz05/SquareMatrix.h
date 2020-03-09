@@ -7,48 +7,30 @@
 
 #include <iostream>
 #include <cmath>
+
 #include "Matrix.h"
 
 using namespace std;
 
-class SquareMatrix {
+template<size_t N>
+class SquareMatrix : public Matrix<N, N> {
 public:
-    SquareMatrix(size_t size);
-    SquareMatrix(const SquareMatrix& obj);
-
-    ~SquareMatrix();
-
-    SquareMatrix operator=(SquareMatrix A);
-
-    SquareMatrix operator+(SquareMatrix A);
-    SquareMatrix operator+=(SquareMatrix A);
-
-    SquareMatrix operator*(double a);
-    SquareMatrix operator*=(double a);
-
-    SquareMatrix operator/(double a);
-    SquareMatrix operator/=(double a);
-
-    friend SquareMatrix operator*(double a, SquareMatrix A);
-    SquareMatrix operator*(SquareMatrix A);
-    SquareMatrix operator*=(SquareMatrix A);
-
-    double& get(size_t n, size_t m);
-
-    friend SquareMatrix transpose(SquareMatrix A);
-    friend double det(SquareMatrix A);
-    friend SquareMatrix inverse(SquareMatrix A, bool& isInverse);
-
-    friend ostream& operator<<(ostream& stream, SquareMatrix A);
-
-    friend istream& operator>>(istream& stream, SquareMatrix& A);
-
-    bool operator==(SquareMatrix A);
-    bool operator!=(SquareMatrix A);
-
-private:
-    double**    matrix_;
-    size_t      sizeN_;
+    SquareMatrix();
+    SquareMatrix(Matrix<N, N> matrix);
+    explicit SquareMatrix(double matrix[N][N]);
 };
+
+template<size_t N>
+double det(SquareMatrix<N> const& A);
+
+template<size_t N>
+SquareMatrix<N> inverse(SquareMatrix<N> const& A);
+
+template<size_t N>
+bool isOrthogonal(SquareMatrix<2> const& A);
+
+class NotInverseExciption : std::exception {};
+
+#include "SquareMatrix_definitions.h"
 
 #endif //DZ05_SQUAREMATRIX_H

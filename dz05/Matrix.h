@@ -7,50 +7,73 @@
 
 #include <iostream>
 
-using namespace std;
+#include "Row.h"
 
+template<size_t N, size_t M>
 class Matrix {
 public:
-    Matrix(size_t sizeN, size_t sizeM);
-    Matrix(const Matrix& obj);
+    Matrix();
+    explicit Matrix(double** matrix);
+    explicit Matrix(double matrix[N][M]);
 
-    ~Matrix();
+    Matrix(Matrix<N, M> const& obj);
 
-    Matrix& operator=(Matrix A);
+    virtual ~Matrix();
 
-    Matrix operator+(Matrix A);
-    Matrix operator+=(Matrix A);
+    Matrix<N, M>& operator=(Matrix<N, M> const& obj);
 
-    Matrix operator*(double a);
-    Matrix operator*=(double a);
-
-    Matrix operator/(double a);
-    Matrix operator/=(double a);
-
-    friend Matrix operator*(double a, Matrix A);
-    Matrix operator*(Matrix A);
-    Matrix operator*=(Matrix A);
-
-    double& get(int n, int m);
-    size_t getSizeN() const;
     size_t getSizeM() const;
+    size_t getSizeN() const;
 
-    friend Matrix transpose(Matrix A);
+    explicit operator double**() const;
 
-    friend ostream& operator<<(ostream& stream, Matrix A);
-    friend istream& operator>>(istream& stream, Matrix& A);
+    Row<M>& operator[](size_t n);
+    Row<M>  operator[](size_t n) const;
 
-    bool operator==(Matrix A);
-    bool operator!=(Matrix A);
+    Matrix<N, M>& operator+=(Matrix<N, M> const& A);
+    Matrix<N, M>& operator-=(Matrix<N, M> const& B);
+    Matrix<N, M>& operator*=(double a);
+    Matrix<N, M>& operator/=(double a);
+
+    template<size_t T, size_t D>
+    friend std::ostream& operator<<(std::ostream& stream, Matrix<T, D> const& A);
+
+    template<size_t T, size_t D>
+    friend std::istream& operator>>(std::istream& stream, Matrix<T, D>& A);
 
 private:
-    double**    matrix_;
-    size_t      sizeN_;
-    size_t      sizeM_;
+    Row<M>* matrix_;
+    size_t  sizeN_;
+    size_t  sizeM_;
 };
 
-class InvalidIndexException     : std::exception {};
-class SizeException             : std::exception {};
-class DivisionByZeroException   : std::exception {};
+template<size_t N, size_t M>
+Matrix<N, M> operator+(Matrix<N, M> A, Matrix<N, M> const& B);
+
+template<size_t N, size_t M>
+Matrix<N, M> operator-(Matrix<N, M> A, Matrix<N, M> const& B);
+
+template<size_t N, size_t M>
+Matrix<N, M> operator*(Matrix<N, M> A, double a);
+
+template<size_t N, size_t M>
+Matrix<N, M> operator*(double a, Matrix<N, M> A);
+
+template<size_t N, size_t M>
+Matrix<N, N> operator*(Matrix<M, N> const& A, Matrix<M, N> const& B);
+
+template<size_t N, size_t M>
+Matrix<N, M> operator/(double a, Matrix<N, M> A);
+
+template<size_t N, size_t M>
+bool operator==(Matrix<N, M> const& A, Matrix<N, M> const& B);
+
+template<size_t N, size_t M>
+bool operator!=(Matrix<N, M> const& A, Matrix<N, M> const& B);
+
+template<size_t N, size_t M>
+Matrix<M, N> transpose(Matrix<N, M> const& A);
+
+#include "Matrix_definitions.h"
 
 #endif //DZ05_MATRIX_H
