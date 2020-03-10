@@ -2,34 +2,34 @@
 // Created by RobertVoropaev on 05.04.2016.
 //
 
-#ifndef DZ07_DYNAMICARRAY_H
-#define DZ07_DYNAMICARRAY_H
+#ifndef DZ07_VECTOR_H
+#define DZ07_VECTOR_H
 
 #include <cstdio>
 #include <bits/exception.h>
 #include <iostream>
 
-template<class T>
+template <class T>
 class Vector {
 public:
     Vector();
     Vector(size_t size);
     Vector(T element, size_t num);
-    Vector(Vector<T> const& obj);
     Vector(T const* array, size_t array_size);
 
     virtual ~Vector();
 
+    Vector(Vector<T> const& obj);
     Vector<T>& operator=(Vector<T> const& obj);
 
     size_t getSize() const;
     size_t getCapacity() const;
     size_t getResizeScale() const;
 
+    bool isEmpty() const;
+
     T getBack() const;
     T getFront() const;
-
-    bool isEmpty() const;
 
     T& operator[](size_t i);
     T operator[](size_t i) const;
@@ -45,13 +45,10 @@ public:
     void resize(size_t new_capacity);
     void setResizeScale(size_t resize_scale);
 
-    template<class D>
+    template <class D>
     friend std::ostream& operator<<(std::ostream& stream, Vector<D> const& A);
-
-    template<class D>
+    template <class D>
     friend std::istream& operator>>(std::istream& stream, Vector<D>& A);
-
-
 
 private:
     T*              array_;
@@ -63,24 +60,21 @@ private:
     size_t          resize_scale_;
     const size_t    default_resize_scale_ = 2;
 
-    const size_t    max_input = 1024;
-
     bool isItValidIndex(size_t index) const;
     size_t getValidCapacity(size_t size) const;
 };
 
 template <class T>
 bool operator==(Vector<T> const& A, Vector<T> const& B);
-
 template <class T>
 bool operator!=(Vector<T> const& A, Vector<T> const& B);
 
 
-class SizeIsLessThanCapacityException:  std::exception {};
-class IncorrectResizeScaleException:    std::exception {};
-class IncorrectIndexException:          std::exception {};
-class VectorIsEmptyException:             std::exception {};
+class SizeIsLessThanCapacityException : std::exception {};
+class IncorrectResizeScaleException :   std::exception {};
+class IncorrectIndexException :         std::exception {};
+class VectorIsEmptyException :          std::exception {};
 
-#include "DynamicArray_def.h"
+#include "Vector_def.h"
 
-#endif //DZ07_DYNAMICARRAY_H
+#endif //DZ07_VECTOR_H
