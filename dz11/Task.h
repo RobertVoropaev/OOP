@@ -1,8 +1,9 @@
 //
-// Created by RobertVoropaev on 01.03.2016.
+// Created by RobertVoropaev on 03.05.2016.
 //
 
-#pragma once
+#ifndef DZ11_TASK_H
+#define DZ11_TASK_H
 
 #include <string>
 #include <iostream>
@@ -14,7 +15,6 @@ class Task {
 public:
     virtual void solve(string in_str) = 0;
 };
-
 
 class TaskA : public Task {
 public:
@@ -80,7 +80,7 @@ public:
 class TaskF : public Task {
 public:
     void solve(string in_str) final {
-        int start = in_str.find('h') + 1;
+        size_t start = in_str.find('h') + 1;
         while(in_str.find('h', start) < in_str.rfind('h')) {
             start = in_str.find('h', start) + 1;
             in_str.replace(start - 1, 1, "H");
@@ -88,3 +88,5 @@ public:
         cout << in_str;
     }
 };
+
+#endif //DZ11_TASK_H
