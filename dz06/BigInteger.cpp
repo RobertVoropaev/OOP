@@ -27,38 +27,38 @@ BigInteger::BigInteger(const char* st) {
     size_ = 0;
     for(int i = 0; i < 250; i++)
         data_[i] = 0;
-    int l = strlen(st);
+    int len = strlen(st);
     char str[250];
-    for(int i = 0; i < l; i++)
+    for(int i = 0; i < len; i++)
         str[i] = st[i];
     if(str[0] == '-' || str[0] == '+') {
         isSignPlus_ = str[0] != '-';
-        for(int i = 1; i < l; i++) {
+        for(int i = 1; i < len; i++) {
             str[i - 1] = str[i];
         }
-        l--;
+        len--;
     } else
         isSignPlus_ = true;
     int u = 0;
-    for(int i = 0; i < l; i++) {
+    for(int i = 0; i < len; i++) {
         if(str[i] == '0')
             u++;
         else
             break;
     }
-    if(u == l) {
+    if(u == len) {
         isSignPlus_ = true;
         data_[0] = 0;
         size_ = 1;
     } else {
-        for(int i = u; i < l; i++) {
+        for(int i = u; i < len; i++) {
             str[i - u] = str[i];
         }
-        l -= u;
-        while(l) {
-            data_[size_] = str[l - 1] - '0';
+        len -= u;
+        while(len) {
+            data_[size_] = str[len - 1] - '0';
             size_++;
-            l--;
+            len--;
         }
     }
 }
@@ -102,60 +102,60 @@ BigInteger& BigInteger::operator=(long long a) {
 ///////////////////////////// Operator + //////////////////////////////
 
 BigInteger BigInteger::operator+(const BigInteger& A) const {
-    BigInteger V;
-    V.size_ = std::max(A.size_, size_);
+    BigInteger B;
+    B.size_ = std::max(A.size_, size_);
     int r = 0;
     if((A.isSignPlus_ && isSignPlus_) || ((!A.isSignPlus_) && (!isSignPlus_))) {
-        for(int i = 0; i < V.size_; i++) {
-            V.data_[i] = data_[i] + A.data_[i] + r;
-            if(V.data_[i] >= 10) {
+        for(int i = 0; i < B.size_; i++) {
+            B.data_[i] = data_[i] + A.data_[i] + r;
+            if(B.data_[i] >= 10) {
                 r = 1;
-                V.data_[i] -= 10;
+                B.data_[i] -= 10;
             } else
                 r = 0;
         }
         if(r > 0) {
-            V.size_++;
-            V.data_[V.size_ - 1] = r;
+            B.size_++;
+            B.data_[B.size_ - 1] = r;
         }
         if(!A.isSignPlus_ && !isSignPlus_)
-            V.isSignPlus_ = false;
+            B.isSignPlus_ = false;
     } else {
         int y = compare(*this, A);
         if(y == 1) {
-            V.size_ = size_;
+            B.size_ = size_;
             int r = 0;
-            for(int i = 0; i < V.size_; i++) {
-                V.data_[i] = data_[i] - A.data_[i] - r;
-                if(V.data_[i] < 0) {
+            for(int i = 0; i < B.size_; i++) {
+                B.data_[i] = data_[i] - A.data_[i] - r;
+                if(B.data_[i] < 0) {
                     r = 1;
-                    V.data_[i] += 10;
+                    B.data_[i] += 10;
                 } else
                     r = 0;
             }
-            while(V.data_[V.size_ - 1] == 0 && V.size_ > 1)
-                V.size_--;
-            V.isSignPlus_ = isSignPlus_;
+            while(B.data_[B.size_ - 1] == 0 && B.size_ > 1)
+                B.size_--;
+            B.isSignPlus_ = isSignPlus_;
         } else if(y == 2) {
-            V.size_ = A.size_;
+            B.size_ = A.size_;
             int r = 0;
-            for(int i = 0; i < V.size_; i++) {
-                V.data_[i] = A.data_[i] - data_[i] - r;
-                if(V.data_[i] < 0) {
+            for(int i = 0; i < B.size_; i++) {
+                B.data_[i] = A.data_[i] - data_[i] - r;
+                if(B.data_[i] < 0) {
                     r = 1;
-                    V.data_[i] += 10;
+                    B.data_[i] += 10;
                 } else
                     r = 0;
             }
-            while(V.data_[V.size_ - 1] == 0 && V.size_ > 1)
-                V.size_--;
-            V.isSignPlus_ = A.isSignPlus_;
+            while(B.data_[B.size_ - 1] == 0 && B.size_ > 1)
+                B.size_--;
+            B.isSignPlus_ = A.isSignPlus_;
         } else if(y == 0) {
-            V.size_ = 1;
-            V.data_[0] = 0;
+            B.size_ = 1;
+            B.data_[0] = 0;
         }
     }
-    return V;
+    return B;
 }
 
 BigInteger BigInteger::operator+(long long a) const {
@@ -181,8 +181,7 @@ BigInteger BigInteger::operator+=(long long a) {
 
 ///////////////////////////// Operator - //////////////////////////////
 
-BigInteger BigInteger::operator-(
-        const BigInteger& A) const {
+BigInteger BigInteger::operator-(const BigInteger& A) const {
     BigInteger N1 = A;
     N1.isSignPlus_ = !N1.isSignPlus_;
     return *this + N1;
@@ -194,8 +193,8 @@ BigInteger BigInteger::operator-(long long a) const {
 }
 
 BigInteger operator-(long long a, const BigInteger& A) {
-    BigInteger V(a);
-    return V - A;
+    BigInteger B(a);
+    return B - A;
 }
 
 BigInteger BigInteger::operator-=(const BigInteger& A) {
@@ -212,28 +211,28 @@ BigInteger BigInteger::operator-=(long long a) {
 ///////////////////////////// Operator * //////////////////////////////
 
 BigInteger BigInteger::operator*(const BigInteger& A) const {
-    BigInteger C;
-    C.size_ = size_ + A.size_ + 1;
+    BigInteger B;
+    B.size_ = size_ + A.size_ + 1;
     for(int i = 0; i < size_; i++)
         for(int j = 0; j < A.size_; j++)
-            C.data_[i + j] += data_[i] * A.data_[j];
-    for(int i = 0; i < C.size_; i++) {
-        C.data_[i + 1] += C.data_[i] / 10;
-        C.data_[i] %= 10;
+            B.data_[i + j] += data_[i] * A.data_[j];
+    for(int i = 0; i < B.size_; i++) {
+        B.data_[i + 1] += B.data_[i] / 10;
+        B.data_[i] %= 10;
     }
-    while(C.data_[C.size_ - 1] == 0 && C.size_ > 1)
-        C.size_--;
-    return C;
+    while(B.data_[B.size_ - 1] == 0 && B.size_ > 1)
+        B.size_--;
+    return B;
 }
 
 BigInteger BigInteger::operator*(long long a) const {
-    BigInteger C(a);
-    return *this * C;
+    BigInteger A(a);
+    return *this * A;
 }
 
 BigInteger operator*(long long a, const BigInteger& A) {
-    BigInteger C(a);
-    return C * A;
+    BigInteger B(a);
+    return B * A;
 }
 
 BigInteger BigInteger::operator*=(const BigInteger& A) {
@@ -250,10 +249,14 @@ BigInteger BigInteger::operator*=(long long a) {
 ///////////////////////////// Operator / //////////////////////////////
 
 BigInteger BigInteger::operator/(const BigInteger& A) const {
-    BigInteger L("0"), R(1), M;
-    while(compare(A * R, *this) == 2)
+    BigInteger L("0");
+    BigInteger R(1);
+    while(compare(A * R, *this) == 2) {
         R = R * 2;
+    }
+    
     BigInteger I("1"), O("0");
+    BigInteger M;
     while((R - L) != I && (R - L) != O) {
         M = del2_(L + R);
         if(compare(A * M, *this) == 2) {
@@ -371,7 +374,8 @@ BigInteger sqrt(const BigInteger& A) {
 
 ///////////////////////////// Extra //////////////////////////////
 
-BigInteger del2_(const BigInteger& A) { //for binary search
+//for binary search
+BigInteger del2_(const BigInteger& A) {
     BigInteger B;
     B.size_ = A.size_;
     int ost = 0, r = 0;
