@@ -12,55 +12,49 @@
 class BigInteger {
 public:
     BigInteger(long long a = 0);
-    BigInteger(const char* st);
+    BigInteger(const char* input_str);
 
-    friend std::ostream& operator<<(std::ostream& stream, const BigInteger& A);
+    friend std::ostream& operator<<(std::ostream& stream, BigInteger const& A);
     friend std::istream& operator>>(std::istream& stream, BigInteger& A);
 
-    BigInteger& operator=(const BigInteger& A);
-    BigInteger& operator=(long long a);
+    BigInteger& operator=(BigInteger const& A);
 
-    BigInteger operator+(const BigInteger& A) const;
-    BigInteger operator+(long long a) const;
-    friend BigInteger operator+(long long a, const BigInteger& A);
-    BigInteger operator+=(const BigInteger& A);
-    BigInteger operator+=(long long a);
+    int operator[](size_t index) const;
+    int& operator[](size_t index);
+    size_t getSize() const;
+    bool getSign() const;
 
-    BigInteger operator-(const BigInteger& A) const;
-    BigInteger operator-(long long a) const;
-    friend BigInteger operator-(long long a, const BigInteger& A);
-    BigInteger operator-=(const BigInteger& A);
-    BigInteger operator-=(long long a);
+    BigInteger& operator+=(BigInteger const& A);
+    BigInteger& operator-=(BigInteger const& A);
+    BigInteger& operator*=(BigInteger const& A);
+    BigInteger& operator/=(BigInteger const& A);
+    BigInteger& operator%=(BigInteger const& A);
 
-    BigInteger operator*(const BigInteger& A) const;
-    BigInteger operator*(long long a) const;
-    friend BigInteger operator*(long long a, const BigInteger& A);
-    BigInteger operator*=(const BigInteger& A);
-    BigInteger operator*=(long long a);
-
-    BigInteger operator/(const BigInteger& A) const;
-    BigInteger operator/(long long a) const;
-    friend BigInteger operator/(long long a, const BigInteger& A);
-    BigInteger operator/=(const BigInteger& A);
-    BigInteger operator/=(long long a);
-
-    friend int compare(const BigInteger& A, const BigInteger& B);
-    bool operator==(const BigInteger& A) const;
-    bool operator!=(const BigInteger& A) const;
-
-    BigInteger operator%(const BigInteger& A) const;
-    BigInteger operator%(long long a) const;
-    friend BigInteger operator%(long long a, const BigInteger& A);
-    BigInteger operator%=(const BigInteger& A);
-    BigInteger operator%=(long long a);
-
-    friend BigInteger sqrt(const BigInteger& A);
 private:
-    int     data_[250];
-    int     size_;
-    bool    isSignPlus_;
+    size_t                  size_;
+    static const size_t     max_input_size_ = 256;
 
-    friend BigInteger del2_(const BigInteger& A);
+    int                     data_[max_input_size_];
+
+    bool                    isSignPlus_;
+
+    friend BigInteger del2_(BigInteger const& A);
+    friend int compare_(BigInteger const& A, const BigInteger& B);
 };
+
+BigInteger operator+(BigInteger A, BigInteger const& B);
+BigInteger operator-(BigInteger A, BigInteger const& B);
+BigInteger operator*(BigInteger A, BigInteger const& B);
+BigInteger operator/(BigInteger A, BigInteger const& B);
+BigInteger operator%(BigInteger A, BigInteger const& B);
+
+bool operator==(BigInteger const& A, BigInteger const& B);
+bool operator!=(BigInteger const& A, BigInteger const& B);
+bool operator<(BigInteger const& A, BigInteger const& B);
+bool operator>(BigInteger const& A, BigInteger const& B);
+bool operator<=(BigInteger const& A, BigInteger const& B);
+bool operator>=(BigInteger const& A, BigInteger const& B);
+
+BigInteger sqrt(BigInteger const& A);
 
 #endif //DZ06_BIGINTEGER_H
