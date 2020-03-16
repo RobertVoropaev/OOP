@@ -22,7 +22,7 @@ public:
     int operator[](size_t index) const;
     int& operator[](size_t index);
     size_t getSize() const;
-    bool getSign() const;
+    bool isSignPlus() const;
 
     BigInteger& operator+=(BigInteger const& A);
     BigInteger& operator-=(BigInteger const& A);

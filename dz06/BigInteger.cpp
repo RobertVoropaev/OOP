@@ -120,7 +120,7 @@ size_t BigInteger::getSize() const {
     return size_;
 }
 
-bool BigInteger::getSign() const {
+bool BigInteger::isSignPlus() const {
     return isSignPlus_;
 }
 
@@ -252,7 +252,7 @@ BigInteger operator*(BigInteger A, BigInteger const& B) {
 
 BigInteger& BigInteger::operator/=(BigInteger const& A) {
     BigInteger Left("0"), Right("1");
-    while(A * Right < *this) {
+    while(compare_(A * Right, *this) == 2) {
         Right *= 2;
     }
 
@@ -260,7 +260,7 @@ BigInteger& BigInteger::operator/=(BigInteger const& A) {
     BigInteger Middle;
     while((Right - Left) != I && (Right - Left) != O) {
         Middle = del2_(Left + Right);
-        if(A * Middle < *this) {
+        if(compare_(A * Middle, *this) == 2) {
             Left = Middle;
         }
         else {
@@ -320,7 +320,7 @@ bool operator==(BigInteger const& A, BigInteger const& B) {
         return false;
     }
 
-    if(A.getSign() != B.getSign()) {
+    if(A.isSignPlus() != B.isSignPlus()) {
         return false;
     }
 
@@ -337,39 +337,33 @@ bool operator!=(BigInteger const& A, BigInteger const& B) {
 }
 
 bool operator<(BigInteger const& A, BigInteger const& B) {
-    if(A.getSign() != A.getSize()) {
-        return !A.getSign();
+    if(A.isSignPlus() != B.isSignPlus()){
+        return !A.isSignPlus();
     }
-
-    if(A.getSign()) {
-        if(A.getSize() < B.getSize()) {
-            return true;
-        }
-        else if(A.getSize() > B.getSize()) {
-            return false;
-        }
-
-        for(int i = 0; i < A.getSize(); i++) {
-            if(A[i] >= B[i]) {
+    else{
+        if(A.isSignPlus()){
+            if(A.getSize() < B.getSize()){
+                return true;
+            }
+            else if(A.getSize() > B.getSize()){
                 return false;
             }
-        }
-        return true;
-    }
-    else {
-        if(A.getSize() > B.getSize()) {
-            return true;
-        }
-        else if(A.getSize() < B.getSize()) {
-            return false;
-        }
+            //123
+            //124
+            else{
+                for(int i = 0; i < A.getSize(); i++){
+                    if(A[i] > B[i]){
 
-        for(int i = 0; i < A.getSize(); i++) {
-            if(A[i] <= B[i]) {
-                return false;
+                    }
+                    else if(A[i] == B[i]){
+
+                    }
+                }
             }
         }
-        return true;
+        else{
+
+        }
     }
 }
 
