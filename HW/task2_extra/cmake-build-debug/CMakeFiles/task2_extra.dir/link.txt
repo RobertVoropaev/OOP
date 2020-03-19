@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/task2_extra.dir/Radio_main.cpp.o CMakeFiles/task2_extra.dir/Radio.cpp.o CMakeFiles/task2_extra.dir/tel_book.cpp.o  -o task2_extra 

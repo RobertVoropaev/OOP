@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="task2" targetName="task2" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bd788a48-8f54-4b16-ade2-638e9b6410a7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../task1/BigInteger/BigInteger.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../task1/BigInteger/BigInteger.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../task1/Matrix/Matrix.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../task1/Matrix/SquareMatrix.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cash.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz02/Circle.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz02/Circle.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz02/Field.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz02/Field.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz02/Point.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz02/Point.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz02/Square.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz02/Square.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz03/PolishNotation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../dz03/PolishNotation.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz03/StackArray.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz03/StackArray.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz03/StackList.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz03/StackList.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz04/String.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../dz04/String.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz04/String.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz04/String.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/Matrix.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/Matrix_def.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/Matrix_def.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/Row.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/Row.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/Row_def.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/Row_def.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/SquareMatrix_def.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/SquareMatrix_def.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz06/BigInteger.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz06/BigInteger.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz07/Vector.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz07/Vector.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/BigInteger.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/BigInteger.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/Geometry.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../task1/Geometry/Geometry.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/Geometry.h" beforeDir="false" afterPath="$PROJECT_DIR$/../task1/Geometry/Geometry.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/Matrix.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/Matrix.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/SquareMatrix.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/SquareMatrix.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../task1/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/223.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/223.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2782.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/2782.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/49.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/49.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/61.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/61.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/745.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/745.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/756.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/756.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cash.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tel_book.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_editor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/text_editor.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1ZMHped1hS0TplVxWvj88NsedJi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="task2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="task2" TARGET_NAME="task2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="task2" RUN_TARGET_NAME="task2">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bd788a48-8f54-4b16-ade2-638e9b6410a7" name="Default Changelist" comment="" />
+      <created>1584642226153</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584642226153</updated>
+      <workItem from="1584642227316" duration="1729000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584644373786">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1584644373786" />
+    <state width="640" height="204" key="ImportCMakeProjectWizard.bottomPanel" timestamp="1584644375379">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="640" height="204" key="ImportCMakeProjectWizard.bottomPanel/67.27.1853.1053@67.27.1853.1053" timestamp="1584644375379" />
+    <state width="640" height="476" key="ImportCMakeProjectWizard.topPanel" timestamp="1584644375379">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="640" height="476" key="ImportCMakeProjectWizard.topPanel/67.27.1853.1053@67.27.1853.1053" timestamp="1584644375379" />
+  </component>
+</project>

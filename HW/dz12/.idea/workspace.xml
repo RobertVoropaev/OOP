@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="dz12" targetName="dz12" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="861ce02c-5611-44e4-b806-95f1473a4e14" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../dz02/Circle.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz02/Circle.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz02/Field.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz02/Field.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz02/Point.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz02/Point.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz02/Square.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz02/Square.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz03/PolishNotation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../dz03/PolishNotation.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz03/StackArray.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz03/StackArray.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz03/StackList.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz03/StackList.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz04/String.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../dz04/String.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz04/String.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz04/String.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/Matrix.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/Matrix_def.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/Matrix_def.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/Row.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/Row.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/Row_def.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/Row_def.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz05/SquareMatrix_def.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz05/SquareMatrix_def.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz06/BigInteger.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz06/BigInteger.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dz07/Vector.h" beforeDir="false" afterPath="$PROJECT_DIR$/../dz07/Vector.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1Yv89L2cJrLSVKQVVJk1c7d8e9Z" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../task1" />
+  </component>
+  <component name="RunManager">
+    <configuration name="dz12" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="dz12" TARGET_NAME="dz12" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="dz12" RUN_TARGET_NAME="dz12">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="861ce02c-5611-44e4-b806-95f1473a4e14" name="Default Changelist" comment="" />
+      <created>1583811554175</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583811554175</updated>
+      <workItem from="1583811555285" duration="4899000" />
+      <workItem from="1584640447293" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584640464630">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1584640464630" />
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1583819858873">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1583819858873" />
+    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1583819858872">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1583819858872" />
+    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1583819858871">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1583819858871" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1583819858873">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1583819858873" />
+  </component>
+</project>

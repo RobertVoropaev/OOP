@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rv/projects/OOP/dz04/String.h
+iostream
+-
+cstring
+-
+string
+-
+
+/home/rv/projects/OOP/dz04/main.cpp
+string
+-
+iostream
+-
+String.h
+/home/rv/projects/OOP/dz04/String.h
+

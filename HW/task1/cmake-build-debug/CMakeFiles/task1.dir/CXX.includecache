@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rv/projects/OOP/task1/BigInteger.cpp
+BigInteger.h
+/home/rv/projects/OOP/task1/BigInteger.h
+
+/home/rv/projects/OOP/task1/BigInteger.h
+iostream
+-
+cstring
+-
+algorithm
+-
+
+/home/rv/projects/OOP/task1/main.cpp
+iostream
+-
+BigInteger.h
+/home/rv/projects/OOP/task1/BigInteger.h
+
