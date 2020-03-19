@@ -1,3 +1,0 @@
-/home/rv/projects/OOP/dz11/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/rv/projects/OOP/dz11/cmake-build-debug/CMakeFiles/dz11.dir
-/home/rv/projects/OOP/dz11/cmake-build-debug/CMakeFiles/edit_cache.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/dz12.dir/Task_top10words.cpp.o  -o dz12 

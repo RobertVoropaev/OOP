@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/task2.dir/223.cpp.o CMakeFiles/task2.dir/2782.cpp.o CMakeFiles/task2.dir/49.cpp.o CMakeFiles/task2.dir/61.cpp.o CMakeFiles/task2.dir/745.cpp.o CMakeFiles/task2.dir/756.cpp.o CMakeFiles/task2.dir/Cash.cpp.o CMakeFiles/task2.dir/tel_book.cpp.o CMakeFiles/task2.dir/text_editor.cpp.o  -o task2 

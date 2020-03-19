@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/dz06.dir/BigInteger.cpp.o CMakeFiles/dz06.dir/main.cpp.o  -o dz06 

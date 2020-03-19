@@ -1,3 +1,0 @@
-/home/rv/projects/OOP/task2_extra/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/rv/projects/OOP/task2_extra/cmake-build-debug/CMakeFiles/task2_extra.dir
-/home/rv/projects/OOP/task2_extra/cmake-build-debug/CMakeFiles/edit_cache.dir
