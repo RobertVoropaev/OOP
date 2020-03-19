@@ -20,11 +20,12 @@ BigInteger::BigInteger(long long a) {
     }
 
     size_ = 0;
-    while(a != 0) {
+
+    do {
         data_[size_] = a % 10;
         a /= 10;
         size_++;
-    }
+    } while((a != 0));
 }
 
 BigInteger::BigInteger(const char* input_str) {
@@ -198,6 +199,7 @@ BigInteger& BigInteger::operator+=(BigInteger const& A) {
         else if(y == 0) {
             B.size_ = 1;
             B.data_[0] = 0;
+            B.isSignPlus_ = true;
         }
     }
     return *this = B;
@@ -225,6 +227,11 @@ BigInteger& BigInteger::operator*=(BigInteger const& A) {
     BigInteger B;
     B.size_ = size_ + A.size_ + 1;
     B.isSignPlus_ = (this->isSignPlus_ == A.isSignPlus_);
+
+    BigInteger Zero("0");
+    if(*this == Zero || A == Zero){
+        B.isSignPlus_ = true;
+    }
 
     for(int i = 0; i < size_; i++) {
         for(int j = 0; j < A.size_; j++) {
@@ -348,23 +355,47 @@ bool operator<(BigInteger const& A, BigInteger const& B) {
             else if(A.getSize() > B.getSize()){
                 return false;
             }
-            //123
-            //124
+
             else{
                 for(int i = 0; i < A.getSize(); i++){
-                    if(A[i] > B[i]){
-
+                    if(A[i] < B[i]){
+                        return true;
                     }
                     else if(A[i] == B[i]){
-
+                        continue;
+                    }
+                    else{
+                        return false;
                     }
                 }
+                return false;
             }
         }
         else{
+            if(A.getSize() > B.getSize()){
+                return true;
+            }
+            else if(A.getSize() < B.getSize()){
+                return false;
+            }
 
+            else{
+                for(int i = 0; i < A.getSize(); i++){
+                    if(A[i] > B[i]){
+                        return true;
+                    }
+                    else if(A[i] == B[i]){
+                        continue;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                return false;
+            }
         }
     }
+    return true;
 }
 
 bool operator>(BigInteger const& A, BigInteger const& B) {
