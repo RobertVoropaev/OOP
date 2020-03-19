@@ -8,7 +8,7 @@
 
 int PolishNotation(char* str) {
     StackArray<int> s;
-    error = false;
+    bool error = false;
     while(*str) {
         if(*str >= '0' && *str <= '9' && s.getSize() < 2) {
             s.push(*str - '0');

@@ -17,33 +17,33 @@ public:
     Vector(T element, size_t num);
     Vector(T const* array, size_t array_size);
 
-    virtual ~Vector();
-
     Vector(Vector<T> const& obj);
     Vector<T>& operator=(Vector<T> const& obj);
 
-    size_t getSize() const;
-    size_t getCapacity() const;
-    size_t getResizeScale() const;
+    virtual ~Vector();
 
-    bool isEmpty() const;
+    size_t  getSize()               const;
+    size_t  getCapacity()           const;
+    size_t  getResizeScale()        const;
 
-    T getBack() const;
-    T getFront() const;
+    bool    isEmpty()               const;
 
-    T& operator[](size_t i);
-    T operator[](size_t i) const;
+    T       getBack()               const;
+    T       getFront()              const;
 
-    void insert(T const& new_element, size_t index);
-    void push_back(T const& new_element);
+    T&      operator[](size_t i);
+    T       operator[](size_t i)    const;
 
-    T erase(size_t index);
-    T pop_back();
+    void    insert(T const& new_element, size_t index);
+    void    push_back(T const& new_element);
 
-    void clear();
+    T       erase(size_t index);
+    T       pop_back();
 
-    void resize(size_t new_capacity);
-    void setResizeScale(size_t resize_scale);
+    void    clear();
+
+    void    resize(size_t new_capacity);
+    void    setResizeScale(size_t resize_scale);
 
     template <class D>
     friend std::ostream& operator<<(std::ostream& stream, Vector<D> const& A);
@@ -60,8 +60,8 @@ private:
     size_t          resize_scale_;
     const size_t    default_resize_scale_ = 2;
 
-    bool isItValidIndex(size_t index) const;
-    size_t getValidCapacity(size_t size) const;
+    bool    isItValidIndex(size_t index)    const;
+    size_t  getValidCapacity(size_t size)   const;
 };
 
 template <class T>

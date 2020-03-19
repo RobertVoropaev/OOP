@@ -1,6 +1,6 @@
 #include "String.h"
 
-#include <cstring>
+/////////////////////////////////////// Base ///////////////////////////////////////
 
 String::String(char const* str) {
     size_ = strlen(str);
@@ -30,10 +30,6 @@ String::String(const String& obj) {
     strncpy(data_, obj.data_, size_ + 1);
 }
 
-String::~String() {
-    delete[] data_;
-}
-
 String& String::operator=(String const& obj) {
     if(this != &obj) {
         delete[] data_;
@@ -43,6 +39,12 @@ String& String::operator=(String const& obj) {
     }
     return *this;
 }
+
+String::~String() {
+    delete[] data_;
+}
+
+/////////////////////////////////////// Cast operators ///////////////////////////////////////
 
 String::operator bool() const {
     return size_ != 0;
@@ -54,6 +56,8 @@ String::operator char const*() const {
     }
     return "";
 }
+
+/////////////////////////////////////// Operators * + ///////////////////////////////////////
 
 String& String::operator+=(String const& obj) {
     char* old_data = data_;
@@ -93,6 +97,7 @@ String operator*(String s, size_t n) {
     return s *= n;
 }
 
+/////////////////////////////////////// Getters ///////////////////////////////////////
 
 char String::operator[](size_t i) const {
     return data_[i];
@@ -102,6 +107,12 @@ char& String::operator[](size_t i) {
     return data_[i];
 }
 
+size_t String::size() const{
+    return size_;
+}
+
+/////////////////////////////////////// Compare ///////////////////////////////////////
+
 bool operator==(String const& s1, String const& s2) {
     return strcmp(s1.data_, s2.data_) == 0;
 }
@@ -110,9 +121,7 @@ bool operator!=(String const& s1, String const& s2) {
     return !(s1 == s2);
 }
 
-size_t String::size() const{
-    return size_;
-}
+/////////////////////////////////////// Streams ///////////////////////////////////////
 
 ostream& operator<<(ostream& stream, String const& s) {
     stream << s.data_;

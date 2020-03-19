@@ -11,18 +11,18 @@ class Circle {
 public:
     explicit Circle(double x = 0, double y = 0, double r = 0, Field field = Field());
 
-    double getX() const;
-    double getY() const;
-    double getR() const;
+    double  getX()  const;
+    double  getY()  const;
+    double  getR()  const;
 
-    void scale(double k);
-    void move(double deltaX, double deltaY);
+    void    scale(double k);
+    void    move(double deltaX, double deltaY);
 private:
-    double x_;
-    double y_;
-    double r_;
+    double  x_;
+    double  y_;
+    double  r_;
 
-    Field field_;
+    Field   field_;
 };
 
 #endif //DZ2_CIRCLE_H

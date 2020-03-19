@@ -12,20 +12,20 @@ public:
     Field();
     Field(double x1, double y1, double x2, double y2);
 
-    double getX1() const;
-    double getY1() const;
-    double getX2() const;
-    double getY2() const;
+    double  getX1() const;
+    double  getY1() const;
+    double  getX2() const;
+    double  getY2() const;
 
-    bool isPointInTheField(double x, double y) const;
-    Field generateFieldWithoutBorders(double border) const;
-    Field generateFieldWithoutLeftAndTopBorders(double border) const;
+    bool    isPointInTheField(double x, double y)                   const;
+    Field   generateFieldWithoutBorders(double border)              const;
+    Field   generateFieldWithoutLeftAndTopBorders(double border)    const;
 private:
-    double x1_;
-    double y1_;
+    double  x1_;
+    double  y1_;
 
-    double x2_;
-    double y2_;
+    double  x2_;
+    double  y2_;
 };
 
 class OutOfFieldException : std::exception {};
